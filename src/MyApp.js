@@ -5,11 +5,26 @@ import axios from 'axios';
 
 function MyApp() { 
   const [characters, setCharacters] = useState([]);
-  function removeOneCharacter(index){
+  
+  function deleteFromTable(index){
     const updated = characters.filter((character, i) => {
       return i !== index
     });
     setCharacters(updated);
+  }
+
+  async function removeOneCharacter(index){
+    var url = 'http://localhost:5000/users/';
+    url += characters[index].id;
+    try{
+      deleteFromTable(index);
+      const response = await axios.delete(url);
+      return response;
+    }
+    catch(error){
+      console.log(error);
+      return false;
+    }
   }
 
   function updateList(person){
