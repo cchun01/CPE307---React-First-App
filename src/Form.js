@@ -22,7 +22,7 @@ function Form(props){
 
     function submitForm(){
         props.handleSubmit(person);
-        setPerson({name: '', job: ''});
+        setPerson({name: '', job: '', id: ''});
     }
     return(
         <form>
@@ -40,6 +40,7 @@ function Form(props){
                 id="job"
                 value={person.job}
                 onChange={handleChange} />
+
             <input type="button" value="Submit" onClick={submitForm} />
         </form>
     )
